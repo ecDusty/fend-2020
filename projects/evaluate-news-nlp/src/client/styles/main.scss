@@ -1,0 +1,17 @@
+//Settings
+@import './settings/variables';
+
+// Base Styles
+@import './general/resets';
+@import './general/base';
+
+
+//Plug ins
+
+
+//================================
+
+// Components
+@import './../components/header/header';
+@import './../components/form/form';
+@import './../components/footer/footer';

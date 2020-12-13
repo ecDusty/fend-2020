@@ -1,8 +1,11 @@
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const cors = require('cors')
 
 const app = express()
+
+app.use(cors());
 
 app.use(express.static('dist'))
 
@@ -19,5 +22,7 @@ app.listen(8080, function () {
 })
 
 app.get('/test', function (req, res) {
+    console.log(mockAPIResponse);
+    console.log('API get with test===========');
     res.send(mockAPIResponse)
 })
