@@ -56,9 +56,9 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({
             // // Simulate the removal of files
-            // // dry: true,
+            // dry: true,
             // // Write Logs to Console
-            // verbose: true,
+            verbose: true,
             // // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: false,
             // protectWebpackAssets: false

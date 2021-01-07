@@ -31,8 +31,17 @@ app.listen(3000, function () {
 })
 
 app.get('/test', function (req, res) {
-    const response = require('./mockAPI.js');
     console.log(response);
     console.log('API get with test===========');
-    res.send(response)
+    fetch('https://www.google.com')
+    .then(respon => respon.text())
+    .then(respon => {
+
+        res.send(
+            {
+                response: respon,
+                testRes: response
+
+            });
+    })
 })

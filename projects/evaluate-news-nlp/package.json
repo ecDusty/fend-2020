@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "nodeJS": "14.7.0",
+  "sideEffects": false,
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
