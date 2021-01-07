@@ -1,22 +1,28 @@
 const path = require('path')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const isDevelopment = () => {
 	const check = process.env.NODE_ENV === 'development';
-	console.log(check);
+	console.log(`is Development check ${check}`);
 	return check;
 }
 
 module.exports = {
     mode: 'development',
-    entry: './src/client/index.js',
+    // verbose: true,
+    entry: {
+        index: './src/client/index.js',
+        print: './src/client/print.js'
+    },
     devtool: 'inline-source-map',
-    stats: 'verbose',
     devServer: {
         contentBase: './dist',
+    },
+    resolve: {
+        modules: [path.resolve(__dirname, 'src'), 'node_modules``']
     },
     module: {
         rules: [
@@ -49,22 +55,22 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin({
-            // Simulate the removal of files
-            dry: true,
-            // Write Logs to Console
-            verbose: true,
-            // Automatically remove all unused webpack assets on rebuild
+            // // Simulate the removal of files
+            // // dry: true,
+            // // Write Logs to Console
+            // verbose: true,
+            // // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: false,
-            protectWebpackAssets: false
-        }),
-        new HtmlWebPackPlugin({
-            template: "./src/client/views/index.html",
-            filename: "./index.html",
+            // protectWebpackAssets: false
         }),
 		new MiniCssExtractPlugin({
 			filename: isDevelopment() ? '[name].css' : '[name].min.css',
 			chunkFilename: isDevelopment() ? '[id].css' : '[id].min.css'
-		})
+		}),
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/index.html",
+            filename: "./index.html"
+        })
     ],
     output: {
         filename: '[name].bundle.js',
